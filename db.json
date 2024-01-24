@@ -1,0 +1,16 @@
+{
+    "games": [
+        {
+            "id": 1,
+            "name": "5 Crowns"
+        },
+        {
+            "id": 2,
+            "name": "Scrabble"
+        },
+        {
+            "id": 3,
+            "name": "Gin Rummy"
+        }
+    ]
+}

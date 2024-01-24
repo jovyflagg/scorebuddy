@@ -1,0 +1,50 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 8px;
+  color: var(--textColor);
+}
+
+.input, .textArea {
+  width: 85%;
+  margin-bottom: 16px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  border-width: thin;
+}
+
+.textArea {
+  height: 250px;
+  white-space: pre-wrap; /* Preserve line breaks */
+}
+
+.button {
+  display: flex;
+  gap: 14px;
+}
+
+.save, .publish {
+  height: 45px;
+  width: 120px;
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.save {
+  background-color: #4772e8;
+  color: white;
+}
+
+.publish {
+  background-color: #1a8917;
+  color: white;
+}

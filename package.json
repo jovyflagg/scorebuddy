@@ -6,21 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "serve-json": "json-server --watch db.json --port 4000"
   },
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "next": "14.1.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "uuid": "^9.0.1"
+    "@auth/prisma-adapter": "^1.0.5",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/material": "^5.14.8",
+    "@nextui-org/react": "^2.2.9",
+    "@prisma/client": "^5.5.2",
+    "@stripe/stripe-js": "^2.1.1",
+    "autoprefixer": "10.4.14",
+    "bootstrap": "^5.3.1",
+    "encoding": "^0.1.13",
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.6",
+    "firebase": "^10.3.0",
+    "json-server": "^0.17.0",
+    "next": "13.4.6",
+    "next-auth": "^4.23.1",
+    "postcss": "8.4.24",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "react-quill": "^2.0.0",
+    "stripe": "^13.4.0",
+    "swr": "^2.2.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0"
-  }
+    "eslint-config-next": "14.0.1",
+    "prisma": "^5.5.2"
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
