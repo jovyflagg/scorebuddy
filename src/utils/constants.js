@@ -10,6 +10,7 @@ const constants = {
         contact: "Contact",
         products: "Products",
         about: "ABOUT",
+        games: "GAMES",
         login: "login",
         logout: "logout",
         cart: "cart",
