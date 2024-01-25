@@ -1,12 +1,11 @@
 import NavBar from "@/components/navbar/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import CartContext from "../context/CartContext"
-import Footer from "@/components/footer/Footer";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import ThemeProvider from "@/providers/ThemeProvider";
-import AuthProvider from "@/providers/AuthProvider";
+
 import constants from "@/utils/constants";
+import GameContextProvider from "@/providers/GameContextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      
-          <ThemeContextProvider>
-            <ThemeProvider>
-         
+
+        <ThemeContextProvider>
+          <ThemeProvider>
+
+            <GameContextProvider>
 
               <div className="container">
                 <div className="wrapper">
@@ -32,9 +32,10 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
 
-           
-            </ThemeProvider>
-          </ThemeContextProvider>
+            </GameContextProvider>
+
+          </ThemeProvider>
+        </ThemeContextProvider>
 
       </body>
     </html>
