@@ -12,6 +12,7 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import styles from "./GamesComp.module.css";
 import GameContext from '@/context/GameContext';
+import { router } from 'next/router';
 
 const GamesComp = () => {
     const {games} = useContext(GameContext)
@@ -21,7 +22,7 @@ const GamesComp = () => {
             <div className={styles.button}>
                 <Button variant="contained">ADD GAME</Button>
             </div>
-            <Box sx={{ width: "100%", bgcolor: "lightblue" }}>
+            <Box sx={{ width: "100%" }}>
                 <nav aria-label="secondary mailbox folders">
                     <List>
                         {games.map((game, index) => {
