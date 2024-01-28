@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 import Box from "@mui/material/Box";
@@ -15,12 +15,12 @@ import styles from "./homepage.module.css";
 import GamesComp from "@/components/GamesComp/GamesComp";
 
 export default function Home({ searchParams }) {
-  const router = useRouter();
+
  
 
   return (
     <>
-      <GamesComp />
+
 
     </>
   );

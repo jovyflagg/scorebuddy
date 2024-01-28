@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext } from 'react'
 
 import Box from "@mui/material/Box";
@@ -12,13 +13,16 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import styles from "./GamesComp.module.css";
 import GameContext from '@/context/GameContext';
-import { router } from 'next/router';
+// import { router } from 'next/router';
+import { useRouter } from "next/navigation";
+const GamesComp = ( { params }) => {
+    const router = useRouter();
+    const { games } = useContext(GameContext)
 
-const GamesComp = () => {
-    const {games} = useContext(GameContext)
     return (
         <div className={styles.content}>
             <h3>Games</h3>
+         
             <div className={styles.button}>
                 <Button variant="contained">ADD GAME</Button>
             </div>
