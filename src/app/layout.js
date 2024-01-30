@@ -6,6 +6,7 @@ import ThemeProvider from "@/providers/ThemeProvider";
 
 import constants from "@/utils/constants";
 import GameContextProvider from "@/providers/GameContextProvider";
+import { TodoPro}
 
 const inter = Inter({ subsets: ["latin"] });
 
