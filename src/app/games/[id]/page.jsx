@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useState, useContext, useDisclosure } from "react";
 // import constants from "../../utils/constants";
 import constants from "../../../utils/constants";
 import styles from "./gamesPage.module.css";
@@ -15,44 +15,45 @@ import {
   ListItemText,
 } from "@mui/material";
 
+
 export default function Games({ params }) {
-  const { games } = useContext(GameContext);
-  const playersGame = games.find((game) => {
-    {
-      game.id === params.id;
-    }
-  });
+  const [showModal, setShowModal] = useState(false);
+  const { games, setGames, addGame, updateGame, deleteGame } = useContext(GameContext);
   const selectedGame = games.find((game) => game.id === params.id);
 
   if (selectedGame) {
     console.log(selectedGame.name);
+
+    console.log();
+
   } else {
     console.log("No game found with the specified id.");
+  }
+  function handleClick(e) {
+    alert(e)
   }
   return (
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
       <div className={styles.about}>{constants.pages.games}</div>
-      <h3>{params ? params.id : null}</h3>
-      {/* {JSON.stringify(selectedGame)} */}
-      {selectedGame.name}
+
       <Box sx={{ width: "100%" }}>
         <nav aria-label="secondary mailbox folders">
           <List>
-            {selectedGame.players.map((player, index) => {
+            {selectedGame?.players.map((player, index) => {
               const initial = player.name.slice(0, 2).toUpperCase();
               return (
                 <div>
                   <ListItem disablePadding key={player.id}>
-                    <ListItemButton
-                      // onClick={() => router.push(`/games/${player.id}`)}
+                    <ListItemButton className="openModal"
+                      onClick={(e) => handleClick(JSON.stringify(player))}
                     >
                       <ListItemIcon>
                         <Avatar>{initial}</Avatar>
                       </ListItemIcon>
                       <ListItemText primary={player.name} />
                     </ListItemButton>
-                      <ListItemText primary={player.score} />
+                    <ListItemText primary={player.score} />
                   </ListItem>
                   {index !== selectedGame.length - 1 && <Divider />}
                 </div>
@@ -61,6 +62,7 @@ export default function Games({ params }) {
           </List>
         </nav>
       </Box>
+
 
       <div className={styles.aboutContainer}>
         <div className={styles.aboutDesc}></div>
