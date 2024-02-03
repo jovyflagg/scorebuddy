@@ -21,7 +21,7 @@ const GamesComp = () => {
 
     return (
         <div className={styles.content}>
-            <h3>Gams</h3>         
+            <h3>Games</h3>         
             <div className={styles.button}>
                 <input type="text" 
                 

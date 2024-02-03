@@ -35,7 +35,7 @@ export default function Games({ params }) {
   return (
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
-      <div className={styles.about}>{constants.pages.games}</div>
+      <div className={styles.about}>{selectedGame?.name}</div>
 
       <Box sx={{ width: "100%" }}>
         <nav aria-label="secondary mailbox folders">
