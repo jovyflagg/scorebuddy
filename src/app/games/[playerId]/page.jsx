@@ -17,6 +17,8 @@ import {
 
 
 export default function Games({ params }) {
+  const id = params.playerId;
+  debugger
   const [showModal, setShowModal] = useState(false);
   const { games, setGames, addGame, updateGame, deleteGame } = useContext(GameContext);
   const selectedGame = games.find((game) => game.id === params.id);
@@ -35,7 +37,7 @@ export default function Games({ params }) {
   return (
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
-      <div className={styles.about}>{selectedGame?.name}</div>
+      <div className={styles.about}>{constants.pages.games}</div>
 
       <Box sx={{ width: "100%" }}>
         <nav aria-label="secondary mailbox folders">
@@ -45,8 +47,8 @@ export default function Games({ params }) {
               return (
                 <div>
                   <ListItem disablePadding key={player.id}>
-                    <ListItemButton
-                      onClick={() => router.push(`/${game.id}/${plater.id}`)}
+                    <ListItemButton className="openModal"
+                      onClick={(e) => handleClick(JSON.stringify(player))}
                     >
                       <ListItemIcon>
                         <Avatar>{initial}</Avatar>
