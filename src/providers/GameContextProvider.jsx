@@ -11,8 +11,10 @@ const GameContextProvider = ({ children }) => {
     { id: nanoid(), name: "Uno", players: [{ id: nanoid(), name: "Amanda", score: "0" }, { id: nanoid(), name: "Opin", score: "100" }] },
     { id: nanoid(), name: "Tekken", players: [{ id: nanoid(), name: "Denzel", score: "0" }, { id: nanoid(), name: "Isaiah", score: "100" }] },
     { id: nanoid(), name: "Dominion", players: [{ id: nanoid(), name: "Joselle", score: "0" }, { id: nanoid(), name: "Alan", score: "100" }] },
-
+ 
   ]);
+
+  const [players, setPlayers] = useState([]);
 
   const addGame = () => {
     const game = {
@@ -39,6 +41,7 @@ const GameContextProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("games", JSON.stringify(games))
   }, [games])
+
 
   return (
     <GameContext.Provider value={{ games, setGames, addGame, updateGame, deleteGame }}>

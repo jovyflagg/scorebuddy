@@ -1,5 +1,5 @@
-"use client"
-import React, { useContext } from 'react'
+"use client";
+import React, { useContext, useState } from "react";
 
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
@@ -12,52 +12,71 @@ import Divider from "@mui/material/Divider";
 
 import Button from "@mui/material/Button";
 import styles from "./GamesComp.module.css";
-import GameContext from '@/context/GameContext';
+import GameContext from "@/context/GameContext";
 import { useRouter } from "next/navigation";
+import { nanoid } from "nanoid";
 
 const GamesComp = () => {
-    const router = useRouter();
-    const { games } = useContext(GameContext)
+  const router = useRouter();
+  const { games, setGames } = useContext(GameContext);
+  const [newGame, setNewGame] = useState("");
 
-    return (
-        <div className={styles.content}>
-            <h3>Games</h3>         
-            <div className={styles.button}>
-                <input type="text" 
-                
-                />
-              <span>
-                {" "}
-                
-              <Button variant="contained">ADD GAME</Button>
-                </span>  
-            </div>
-            <Box sx={{ width: "100%" }}>
-                <nav aria-label="secondary mailbox folders">
-                    <List>
-                        {games.map((game, index) => {
-                            const initial = game.name.slice(0, 2).toUpperCase();
-                            return (
-                                <div>
-                                    <ListItem disablePadding key={game.id}>
-                                        <ListItemButton
-                                            onClick={() => router.push(`/games/${game.id}`)}
-                                        >
-                                            <ListItemIcon>
-                                                <Avatar>{initial}</Avatar>
-                                            </ListItemIcon>
-                                            <ListItemText primary={game.name} />
-                                        </ListItemButton>
-                                    </ListItem>
-                                    {index !== games.length - 1 && <Divider />}
-                                </div>
-                            );
-                        })}
-                    </List>
-                </nav>
-            </Box>
-        </div>
-    )
-}
+  const handleInputChange = (event) => {
+    setNewGame(event.target.value);
+  };
 
-export default GamesComp
+  const handleAddGame = () => {
+    if (newGame.trim() !== "") {
+      const newGameItem = {
+        // id: games.length + 1, // Assuming each game has a unique ID
+        id: nanoid(), // Assuming each game has a unique ID
+        name: newGame.trim(),
+        players: []
+      };
+
+      setGames([newGameItem, ...games]);
+      setNewGame(""); // Clear input after adding game
+    }
+  };
+
+  return (
+    <div className={styles.content}>
+      <h3>Games</h3>
+      <div className={styles.button}>
+        <input type="text" value={newGame} onChange={handleInputChange} />
+        <span>
+          {/* Step 4: Update Button */}
+          <Button variant="contained" onClick={handleAddGame}>
+            ADD GAME
+          </Button>
+        </span>
+      </div>
+      <Box sx={{ width: "100%" }}>
+        <nav aria-label="secondary mailbox folders">
+          <List>
+            {games.map((game, index) => {
+              const initial = game.name.slice(0, 2).toUpperCase();
+              return (
+                <div key={game.id}>
+                  <ListItem disablePadding key={game.id}>
+                    <ListItemButton
+                      onClick={() => router.push(`/games/${game.id}`)}
+                    >
+                      <ListItemIcon>
+                        <Avatar>{initial}</Avatar>
+                      </ListItemIcon>
+                      <ListItemText primary={game.name} />
+                    </ListItemButton>
+                  </ListItem>
+                  {index !== games.length - 1 && <Divider />}
+                </div>
+              );
+            })}
+          </List>
+        </nav>
+      </Box>
+    </div>
+  );
+};
+
+export default GamesComp;
