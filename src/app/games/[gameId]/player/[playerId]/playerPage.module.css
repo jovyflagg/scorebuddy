@@ -49,4 +49,17 @@
   .signature{
     text-align: center;
   }
+
+  .list{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* width: 100%; */
   
+  }
+
+  /* .listItemTextWithSpace{
+    margin-left: auto;
+  } */
+
+ 

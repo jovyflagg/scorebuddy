@@ -2,7 +2,7 @@
 import React, { useState, useContext, useDisclosure } from "react";
 // import constants from "../../utils/constants";
 import constants from "../../../utils/constants";
-import styles from "./gamesPage.module.css";
+import styles from "./gamePage.module.css";
 import GameContext from "@/context/GameContext";
 import {
   Avatar,
@@ -16,14 +16,16 @@ import {
   ListItemText,
 } from "@mui/material";
 import { nanoid } from "nanoid";
+import { useRouter } from "next/navigation";
 
 export default function Games({ params }) {
+  
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const { games, setGames, addGame, updateGame, deleteGame } =
-    useContext(GameContext);
-  const selectedGame = games.find((game) => game.id === params.id);
+  const { games, setGames, addGame, updateGame, deleteGame } = useContext(GameContext);
+  const selectedGame = games.find((game) => game.id === params.gameId);
   const [newPlayer, setNewPlayer] = useState("");
-const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState([]);
 
   if (selectedGame) {
     console.log(selectedGame.name);
@@ -38,12 +40,21 @@ const [players, setPlayers] = useState([]);
     alert(e);
   }
 
+  function handleUpdatePlayer(player) {
+
+
+    alert(JSON.stringify(player));
+
+    router.push(`/player/${player.id}`);
+
+  }
+
   const handleInputChange = (event) => {
     setNewPlayer(event.target.value);
   };
 
   const handleAddPlayer = () => {
- 
+
     if (newPlayer.trim() !== "") {
       const newPlayerItem = {
         // id: games.length + 1, // Assuming each game has a unique ID
@@ -53,8 +64,8 @@ const [players, setPlayers] = useState([]);
       };
       alert(newPlayerItem.name + " has been added!")
       setPlayers([newPlayerItem])
-    //  setPlayers([newPlayerItem, ...players])
-     console.log("NEW PLAYER ADDED: " + newPlayer)
+      //  setPlayers([newPlayerItem, ...players])
+      console.log("NEW PLAYER ADDED: " + newPlayer)
       setNewPlayer(""); // Clear input after adding game
     }
   };
@@ -62,13 +73,15 @@ const [players, setPlayers] = useState([]);
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
       <div className={styles.about}>{selectedGame?.name}</div>
-      <div className={styles.button}>
+      <div className={styles.button}
+      >
         {/* Step 4: Update Input */}
+        
         <input type="text" value={newPlayer} onChange={handleInputChange} />
         <span>
           {/* Step 4: Update Button */}
           <Button variant="contained" onClick={handleAddPlayer}>
-            ADD PLAYER
+            ADD PLAYER 
           </Button>
         </span>
       </div>
@@ -81,9 +94,10 @@ const [players, setPlayers] = useState([]);
                 <div key={selectedGame.id}>
                   <ListItem disablePadding key={player.id}>
                     <ListItemButton
-                      className="openModal"
-                      onClick={(e) => handleClick(JSON.stringify(player))}
+
+                      onClick={() => router.push(`/games/${params.gameId}/player/${player.id}`)}             
                     >
+
                       <ListItemIcon>
                         <Avatar>{initial}</Avatar>
                       </ListItemIcon>
