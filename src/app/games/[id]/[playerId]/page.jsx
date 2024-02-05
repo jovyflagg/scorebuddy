@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useContext, useDisclosure } from "react";
 // import constants from "../../utils/constants";
-import constants from "../../../utils/constants";
+import constants from "../../../../utils/constants";
 import styles from "./gamesPage.module.css";
 import GameContext from "@/context/GameContext";
 import {

@@ -43,18 +43,18 @@ const [players, setPlayers] = useState([]);
   };
 
   const handleAddPlayer = () => {
-    alert("NEW PLAYER!!!!", newPlayer)
+ 
     if (newPlayer.trim() !== "") {
       const newPlayerItem = {
         // id: games.length + 1, // Assuming each game has a unique ID
         id: nanoid(), // Assuming each game has a unique ID
         // name: newPlayer.trim(),
-        name: "Simmigon",
+        name: newPlayer,
       };
-      alert("NEW PLAYER!!!!", newPlayerItem)
-      setNewPlayer(...newPlayerItem);
+      alert(newPlayerItem.name + " has been added!")
+      setPlayers([newPlayerItem])
     //  setPlayers([newPlayerItem, ...players])
-     console.log("NEW PLAYER ADDED: ",newPlayer)
+     console.log("NEW PLAYER ADDED: " + newPlayer)
       setNewPlayer(""); // Clear input after adding game
     }
   };
