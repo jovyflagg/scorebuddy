@@ -15,10 +15,12 @@ import styles from "./GamesComp.module.css";
 import GameContext from "@/context/GameContext";
 import { useRouter } from "next/navigation";
 import { nanoid } from "nanoid";
+import { IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const GamesComp = () => {
   const router = useRouter();
-  const { games, setGames, addGame } = useContext(GameContext);
+  const { games, setGames, addGame, deleteGame } = useContext(GameContext);
   const [newGame, setNewGame] = useState("");
 
   const handleInputChange = (event) => {
@@ -27,8 +29,8 @@ const GamesComp = () => {
 
   const handleAddGame = () => {
     if (newGame.trim() !== "") {
-      addGame(newGame.trim())
-      debugger
+      addGame(newGame.trim());
+      debugger;
       setNewGame(""); // Clear input after adding game
     }
   };
@@ -39,7 +41,7 @@ const GamesComp = () => {
         // id: games.length + 1, // Assuming each game has a unique ID
         id: nanoid(), // Assuming each game has a unique ID
         name: newGame.trim(),
-        players: []
+        players: [],
       };
 
       setGames([newGameItem, ...games]);
@@ -76,6 +78,9 @@ const GamesComp = () => {
                       <ListItemText primary={game.name} />
                       <ListItemText primary={game.score} />
                     </ListItemButton>
+                      <IconButton aria-label="delete" size="small" onClick={()=>deleteGame(game.id)}>
+                        <DeleteIcon fontSize="inherit" />
+                      </IconButton>
                   </ListItem>
                   {index !== games.length - 1 && <Divider />}
                 </div>
