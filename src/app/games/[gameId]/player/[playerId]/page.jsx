@@ -71,7 +71,7 @@ export default function Games({ params }) {
               if (player.id === params.playerId) {
                 const initial = player.name.slice(0, 2).toUpperCase();
                 return (
-                  <div>
+                  <div key={game.id}>
                     <ListItem disablePadding key={player.id}>
                       <ListItemButton onClick={() => handleUpdatePlayer}>
                         <ListItemIcon>

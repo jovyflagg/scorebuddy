@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 
 import Button from "@mui/material/Button";
-import styles from "./GamesComp.module.css";
+import styles from "./gamesComp.module.css";
 import GameContext from "@/context/GameContext";
 import { useRouter } from "next/navigation";
 import { nanoid } from "nanoid";
