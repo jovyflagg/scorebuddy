@@ -23,7 +23,7 @@ export default function Home() {
     <>
       <div className={styles.container}>
         <title>{constants.pages.games}</title>
-        <div className={styles.games}>{constants.pages.games}</div>
+        {/* <div className={styles.games}>{constants.pages.games}</div> */}
         <GamesComp />
         <div className={styles.aboutContainer}>
           <div className={styles.aboutDesc}></div>

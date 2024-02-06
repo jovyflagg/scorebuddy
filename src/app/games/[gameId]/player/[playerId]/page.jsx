@@ -40,12 +40,13 @@ export default function Games({ params }) {
     setNewScore(event.target.value); //newScore input update
   };
   const handleUpdateScore = (player) => {
+
     const updatedGames = games.map((game) => {
-    
+
       if (game.id === selectedGame.id) {
         const updatedPlayers = game.players.map((p) => {
           if (p.id === player.id) {
-            return { ...p, score: parseFloat(p.score) + parseFloat(newScore) };
+            return { ...p, score: parseInt(p.score) + parseInt(newScore) };
           }
           return p;
         });
@@ -56,6 +57,7 @@ export default function Games({ params }) {
 
     setGames(updatedGames);
     setNewScore("");
+    router.back();
   };
 
   return (
@@ -87,9 +89,9 @@ export default function Games({ params }) {
                         onChange={handleScoreInputOnChange}
                         name="newScore"
                         value={newScore}
-                       
+
                       />
-                      <Button onClick={()=> handleUpdateScore(player)} >Save</Button>
+                      <Button onClick={() => handleUpdateScore(player)} >Save</Button>
                     </form>
                   </div>
                 );

@@ -19,7 +19,7 @@ import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 
 export default function Games({ params }) {
-  
+
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const { games, setGames, addGame, updateGame, deleteGame } = useContext(GameContext);
@@ -63,7 +63,8 @@ export default function Games({ params }) {
         name: newPlayer,
       };
       alert(newPlayerItem.name + " has been added!")
-      setPlayers([newPlayerItem])
+      setNewPlayer(newPlayerItem); // Clear input after adding game
+      setPlayers([])
       //  setPlayers([newPlayerItem, ...players])
       console.log("NEW PLAYER ADDED: " + newPlayer)
       setNewPlayer(""); // Clear input after adding game
@@ -76,12 +77,12 @@ export default function Games({ params }) {
       <div className={styles.button}
       >
         {/* Step 4: Update Input */}
-        
+
         <input type="text" value={newPlayer} onChange={handleInputChange} />
         <span>
           {/* Step 4: Update Button */}
           <Button variant="contained" onClick={handleAddPlayer}>
-            ADD PLAYER 
+            ADD PLAYER
           </Button>
         </span>
       </div>
@@ -95,15 +96,17 @@ export default function Games({ params }) {
                   <ListItem disablePadding key={player.id}>
                     <ListItemButton
 
-                      onClick={() => router.push(`/games/${params.gameId}/player/${player.id}`)}             
+                      onClick={() => router.push(`/games/${params.gameId}/player/${player.id}`)}
                     >
 
                       <ListItemIcon>
                         <Avatar>{initial}</Avatar>
                       </ListItemIcon>
                       <ListItemText primary={player.name} />
-                    </ListItemButton>
-                    <ListItemText primary={player.score} />
+                      </ListItemButton  >
+                      <ListItemButton  >
+                        <ListItemText primary={player.score} />
+                      </ListItemButton  >
                   </ListItem>
                   {index !== selectedGame.length - 1 && <Divider />}
                 </div>

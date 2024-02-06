@@ -18,7 +18,7 @@ import { nanoid } from "nanoid";
 
 const GamesComp = () => {
   const router = useRouter();
-  const { games, setGames } = useContext(GameContext);
+  const { games, setGames, addGame } = useContext(GameContext);
   const [newGame, setNewGame] = useState("");
 
   const handleInputChange = (event) => {
@@ -26,6 +26,15 @@ const GamesComp = () => {
   };
 
   const handleAddGame = () => {
+    if (newGame.trim() !== "") {
+      addGame(newGame.trim())
+      debugger
+      setGames([newGameItem, ...games]);
+      setNewGame(""); // Clear input after adding game
+    }
+  };
+
+  const add = () => {
     if (newGame.trim() !== "") {
       const newGameItem = {
         // id: games.length + 1, // Assuming each game has a unique ID
@@ -66,6 +75,7 @@ const GamesComp = () => {
                         <Avatar>{initial}</Avatar>
                       </ListItemIcon>
                       <ListItemText primary={game.name} />
+                      <ListItemText primary={game.score} />
                     </ListItemButton>
                   </ListItem>
                   {index !== games.length - 1 && <Divider />}
