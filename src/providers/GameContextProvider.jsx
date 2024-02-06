@@ -46,6 +46,18 @@ const GameContextProvider = ({ children }) => {
   }
 
   const deleteGame = (id) => { setGames((prev) => prev.filter((game) => game.id !== id)) }
+  const deletePlayer = (gameId, playerId) => {
+    setGames((prev) =>
+      prev.map((game) => {
+        if (game.id === gameId) {
+          // If it's the selected game, filter out the player by playerId
+          const updatedPlayers = game.players.filter((player) => player.id !== playerId);
+          return { ...game, players: updatedPlayers };
+        }
+        return game;
+      })
+    );
+  };
 
   useEffect(() => {
     const games = JSON.parse(localStorage.getItem("games"))
@@ -60,7 +72,7 @@ const GameContextProvider = ({ children }) => {
 
 
   return (
-    <GameContext.Provider value={{ games, setGames, addGame, updateGame, deleteGame, addPlayer }}>
+    <GameContext.Provider value={{ games, setGames, addGame, updateGame, deleteGame, addPlayer, deletePlayer }}>
       {children}
     </GameContext.Provider>
   )

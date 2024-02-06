@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   Divider,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -17,12 +18,14 @@ import {
 } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function Games({ params }) {
-
   const router = useRouter();
+  debugger
   const [showModal, setShowModal] = useState(false);
-  const { games, setGames, addGame, updateGame, deleteGame, addPlayer } = useContext(GameContext);
+  const { games, setGames, addGame, updateGame, deleteGame, addPlayer, deletePlayer } =
+    useContext(GameContext);
   const selectedGame = games.find((game) => game.id === params.gameId);
   const [newPlayer, setNewPlayer] = useState("");
   const [players, setPlayers] = useState([]);
@@ -41,12 +44,9 @@ export default function Games({ params }) {
   }
 
   function handleUpdatePlayer(player) {
-
-
     alert(JSON.stringify(player));
 
     router.push(`/player/${player.id}`);
-
   }
 
   const handleInputChange = (event) => {
@@ -54,12 +54,10 @@ export default function Games({ params }) {
   };
 
   const handleAddPlayer = (id, newPlayer) => {
-
     if (newPlayer.trim() !== "") {
-     debugger
-      addPlayer(id, newPlayer)
+      debugger;
+      addPlayer(id, newPlayer);
 
-     
       setNewPlayer(""); // Clear input after adding game
     }
   };
@@ -67,14 +65,16 @@ export default function Games({ params }) {
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
       <div className={styles.about}>{selectedGame?.name}</div>
-      <div className={styles.button}
-      >
+      <div className={styles.button}>
         {/* Step 4: Update Input */}
 
         <input type="text" value={newPlayer} onChange={handleInputChange} />
         <span>
           {/* Step 4: Update Button */}
-          <Button variant="contained" onClick={()=> handleAddPlayer(selectedGame.id, newPlayer)}>
+          <Button
+            variant="contained"
+            onClick={() => handleAddPlayer(selectedGame.id, newPlayer)}
+          >
             ADD PLAYER
           </Button>
         </span>
@@ -88,18 +88,27 @@ export default function Games({ params }) {
                 <div key={selectedGame.id}>
                   <ListItem disablePadding key={player.id}>
                     <ListItemButton
-
-                      onClick={() => router.push(`/games/${params.gameId}/player/${player.id}`)}
+                      onClick={() =>
+                        router.push(
+                          `/games/${params.gameId}/player/${player.id}`
+                        )
+                      }
                     >
-
                       <ListItemIcon>
                         <Avatar>{initial}</Avatar>
                       </ListItemIcon>
                       <ListItemText primary={player.name} />
-                      </ListItemButton  >
-                      <ListItemButton  >
-                        <ListItemText primary={player.score} />
-                      </ListItemButton  >
+                    </ListItemButton>
+                    <ListItemButton>
+                      <ListItemText primary={player.score} />
+                    </ListItemButton>
+                  <IconButton
+                    aria-label="delete"
+                    size="small"
+                    onClick={() => deletePlayer(selectedGame.id, player.id)}
+                  >
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
                   </ListItem>
                   {index !== selectedGame.length - 1 && <Divider />}
                 </div>
