@@ -1,7 +1,7 @@
 const constants = {
 
     navBar: {
-        links: ["home", "products", "about", "cart", "logout", "loginsimmigondarilflaggjovyflaggfromatlanta", "posts"]
+        links: ["home", "products", "about", "logout", "loginsimmigondarilflaggjovyflaggfromatlanta", "posts"]
     },
 
     pages: {
@@ -13,7 +13,6 @@ const constants = {
         games: "GAMES",
         login: "login",
         logout: "logout",
-        cart: "cart",
         success: "success",
         cancel: "cancel",
         adminPortal: "adminPortal",
