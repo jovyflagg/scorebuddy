@@ -89,7 +89,7 @@ export default function Games({ params }) {
                     <ListItemButton
                       onClick={() =>
                         router.push(
-                          `https://scorebuddy-qpq51l3vs-jovy-flaggs-projects.vercel.app/games/${params.gameId}/player/${player.id}`
+                          `https://scorebuddy.vercel.app//games/${params.gameId}/player/${player.id}`
                         )
                       }
                     >
