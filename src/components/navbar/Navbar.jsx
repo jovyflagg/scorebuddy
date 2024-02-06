@@ -6,6 +6,7 @@ import Link from "next/link";
 import AuthLinks from "../authLinks/AuthLinks";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import constants from "@/utils/constants";
+import HomeIcon from '@mui/icons-material/Home';
 
 const Navbar = () => {
   return (
@@ -31,12 +32,10 @@ const Navbar = () => {
       <div className={styles.links}>
         <ThemeToggle />
         <Link href="/" className={styles.link}>
-          {constants.pages.home}
+          <HomeIcon />
         </Link>
-        {/* <Link href="/products" className={styles.link}>Products</Link>         */}
-        <Link href="/about" className={styles.link}>
-          About
-        </Link>
+
+       
 
         <AuthLinks />
         

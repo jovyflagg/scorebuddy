@@ -9,7 +9,6 @@ import {
   Box,
   Button,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -102,13 +101,9 @@ export default function Games({ params }) {
                     <ListItemButton>
                       <ListItemText primary={player.score} />
                     </ListItemButton>
-                  <IconButton
-                    aria-label="delete"
-                    size="small"
-                    onClick={() => deletePlayer(selectedGame.id, player.id)}
-                  >
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
+                
+                    <DeleteIcon onClick={() => deletePlayer(selectedGame.id, player.id)}/>
+                  
                   </ListItem>
                   {index !== selectedGame.length - 1 && <Divider />}
                 </div>

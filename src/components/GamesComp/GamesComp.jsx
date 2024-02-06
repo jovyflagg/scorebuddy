@@ -78,9 +78,9 @@ const GamesComp = () => {
                       <ListItemText primary={game.name} />
                       <ListItemText primary={game.score} />
                     </ListItemButton>
-                      <IconButton aria-label="delete" size="small" onClick={()=>deleteGame(game.id)}>
-                        <DeleteIcon fontSize="inherit" />
-                      </IconButton>
+                      
+                        <DeleteIcon onClick={()=>deleteGame(game.id)}/>
+                     
                   </ListItem>
                   {index !== games.length - 1 && <Divider />}
                 </div>

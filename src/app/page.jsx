@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 
@@ -16,18 +16,12 @@ import GamesComp from "@/components/GamesComp/GamesComp";
 import constants from "@/utils/constants";
 
 export default function Home() {
-
-
-
   return (
     <>
       <div className={styles.container}>
         <title>{constants.pages.games}</title>
-        {/* <div className={styles.games}>{constants.pages.games}</div> */}
+
         <GamesComp />
-        <div className={styles.aboutContainer}>
-          <div className={styles.aboutDesc}></div>
-        </div>
       </div>
     </>
   );
