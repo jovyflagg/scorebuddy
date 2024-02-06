@@ -70,7 +70,7 @@ const GamesComp = () => {
                 <div key={game.id}>
                   <ListItem disablePadding key={game.id}>
                     <ListItemButton
-                      onClick={() => router.push(`https://scorebuddy.vercel.app/games/${game.id}`)}
+                      onClick={() => router.push(`/games/${game.id}`)}
                     >
                       <ListItemIcon>
                         <Avatar>{initial}</Avatar>
