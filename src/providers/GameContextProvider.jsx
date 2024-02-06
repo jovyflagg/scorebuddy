@@ -26,6 +26,21 @@ const GameContextProvider = ({ children }) => {
     setGames((prev) => [game, ...prev])
   }
 
+  const addPlayer = (gameId, name) => {
+    const player = {
+      id: nanoid(),
+      name,
+      score: 0
+    }
+    setGames((prevGames) => 
+    prevGames.map((game) => 
+      game.id === gameId 
+        ? { ...game, players: [...game.players, player] }
+        : game
+    )
+  );
+  }
+
   const updateGame = (id, game) => {
     setGames((prev) => prev.map((prevgame) => (prevgame.id === id ? game : prevgame)))
   }
@@ -45,7 +60,7 @@ const GameContextProvider = ({ children }) => {
 
 
   return (
-    <GameContext.Provider value={{ games, setGames, addGame, updateGame, deleteGame }}>
+    <GameContext.Provider value={{ games, setGames, addGame, updateGame, deleteGame, addPlayer }}>
       {children}
     </GameContext.Provider>
   )

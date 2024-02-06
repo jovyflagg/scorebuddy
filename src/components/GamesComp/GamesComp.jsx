@@ -29,7 +29,6 @@ const GamesComp = () => {
     if (newGame.trim() !== "") {
       addGame(newGame.trim())
       debugger
-      setGames([newGameItem, ...games]);
       setNewGame(""); // Clear input after adding game
     }
   };

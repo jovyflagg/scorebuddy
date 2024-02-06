@@ -22,7 +22,7 @@ export default function Games({ params }) {
 
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const { games, setGames, addGame, updateGame, deleteGame } = useContext(GameContext);
+  const { games, setGames, addGame, updateGame, deleteGame, addPlayer } = useContext(GameContext);
   const selectedGame = games.find((game) => game.id === params.gameId);
   const [newPlayer, setNewPlayer] = useState("");
   const [players, setPlayers] = useState([]);
@@ -53,20 +53,13 @@ export default function Games({ params }) {
     setNewPlayer(event.target.value);
   };
 
-  const handleAddPlayer = () => {
+  const handleAddPlayer = (id, newPlayer) => {
 
     if (newPlayer.trim() !== "") {
-      const newPlayerItem = {
-        // id: games.length + 1, // Assuming each game has a unique ID
-        id: nanoid(), // Assuming each game has a unique ID
-        // name: newPlayer.trim(),
-        name: newPlayer,
-      };
-      alert(newPlayerItem.name + " has been added!")
-      setNewPlayer(newPlayerItem); // Clear input after adding game
-      setPlayers([])
-      //  setPlayers([newPlayerItem, ...players])
-      console.log("NEW PLAYER ADDED: " + newPlayer)
+     debugger
+      addPlayer(id, newPlayer)
+
+     
       setNewPlayer(""); // Clear input after adding game
     }
   };
@@ -81,7 +74,7 @@ export default function Games({ params }) {
         <input type="text" value={newPlayer} onChange={handleInputChange} />
         <span>
           {/* Step 4: Update Button */}
-          <Button variant="contained" onClick={handleAddPlayer}>
+          <Button variant="contained" onClick={()=> handleAddPlayer(selectedGame.id, newPlayer)}>
             ADD PLAYER
           </Button>
         </span>
