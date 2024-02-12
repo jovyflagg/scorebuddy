@@ -21,10 +21,10 @@ const Footer = () => {
       </div>
       <div className={styles.links}>
         <div className={styles.list}>
-          <span className={styles.listTitle}>{constants.footer.headers.links.name}</span>
+          {/* <span className={styles.listTitle}>{constants.footer.headers.links.name}</span>
           {constants.footer.headers.links.links.map((link, index) =>
             <Link key={index} href={`/${link}`}>{link}</Link>
-          )}
+          )} */}
 
         </div>
 

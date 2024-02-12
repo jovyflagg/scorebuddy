@@ -1,10 +1,15 @@
-.content{
+.buttonContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
 }
 
-.button{
-  align-self: flex-end;
+.buttonContainer input[type="text"] {
+  height: 35px; /* Adjust the height as needed */
+  width: 250px; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional: Add some spacing between the input and button */
 }
+
+.buttonContainer .MuiButton-contained {
+  height: 40px; /* Adjust the height to match the input field */
+}
+

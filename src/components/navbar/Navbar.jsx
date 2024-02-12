@@ -22,7 +22,7 @@ const Navbar = () => {
           <Image src="/youtube.png" alt="youtube" width={24} height={24} />
         </Link>
       </div>
-      {/* <div className={styles.logo}>Kaipher</div> */}
+
       <div className={styles.logo}>
         <Link href="/" className={styles.link}>
           {constants.application.name}
@@ -35,12 +35,8 @@ const Navbar = () => {
           <HomeIcon />
         </Link>
 
-       
-
         <AuthLinks />
-        
-         
-        
+                      
       </div>
     </div>
   );

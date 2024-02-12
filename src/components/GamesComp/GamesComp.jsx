@@ -14,8 +14,6 @@ import Button from "@mui/material/Button";
 import styles from "./gamesComp.module.css";
 import GameContext from "@/context/GameContext";
 import { useRouter } from "next/navigation";
-import { nanoid } from "nanoid";
-import { IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete'
 
 const GamesComp = () => {
@@ -31,37 +29,21 @@ const GamesComp = () => {
     if (newGame.trim() !== "") {
       addGame(newGame.trim());
       debugger;
-      setNewGame(""); // Clear input after adding game
-    }
-  };
-
-  const add = () => {
-    if (newGame.trim() !== "") {
-      const newGameItem = {
-        // id: games.length + 1, // Assuming each game has a unique ID
-        id: nanoid(), // Assuming each game has a unique ID
-        name: newGame.trim(),
-        players: [],
-      };
-
-      setGames([newGameItem, ...games]);
-      setNewGame(""); // Clear input after adding game
+      setNewGame("");
     }
   };
 
   return (
     <div className={styles.content}>
       <h3>Games</h3>
-      <div className={styles.button}>
-        <input type="text" value={newGame} onChange={handleInputChange} />
-        <span>
-          {/* Step 4: Update Button */}
-          <Button variant="contained" onClick={handleAddGame}>
-            ADD GAME
-          </Button>
-        </span>
-      </div>
+
       <Box sx={{ width: "100%" }}>
+      <div className={styles.buttonContainer}>
+        <input type="text" value={newGame} onChange={handleInputChange} />
+        <Button variant="contained" onClick={handleAddGame}>
+          ADD GAME
+        </Button>
+      </div>
         <nav aria-label="secondary mailbox folders">
           <List>
             {games.map((game, index) => {
@@ -78,9 +60,9 @@ const GamesComp = () => {
                       <ListItemText primary={game.name} />
                       <ListItemText primary={game.score} />
                     </ListItemButton>
-                      
-                        <DeleteIcon onClick={()=>deleteGame(game.id)}/>
-                     
+
+                    <DeleteIcon onClick={() => deleteGame(game.id)} />
+
                   </ListItem>
                   {index !== games.length - 1 && <Divider />}
                 </div>

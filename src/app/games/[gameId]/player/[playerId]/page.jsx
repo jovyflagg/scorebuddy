@@ -30,6 +30,7 @@ export default function Games({ params }) {
     selectedGame?.players.find((player) => player.id === playerId)
   );
   const [newScore, setNewScore] = useState(0);
+  const [text, setText] = useState('Initial Text');
 
   useEffect(() => {
     // If selectedGame or playerId changes, update the player state
@@ -39,6 +40,8 @@ export default function Games({ params }) {
   const handleScoreInputOnChange = (event) => {
     setNewScore(event.target.value); //newScore input update
   };
+
+
   const handleUpdateScore = (player) => {
 
     const updatedGames = games.map((game) => {
@@ -60,6 +63,28 @@ export default function Games({ params }) {
     router.back();
   };
 
+
+  const handleBlur = (event, player) => {
+    const updatedGames = games.map((game) => {
+
+      if (game.id === selectedGame.id) {
+        const updatedPlayers = game.players.map((p) => {
+          if (p.id === player.id) {
+            return { ...p, name: event.target.textContent };
+          }
+          return p;
+        });
+        return { ...game, players: updatedPlayers };
+      }
+      return game;
+    });
+
+
+    setGames(updatedGames);
+    router.back();
+  };
+
+
   return (
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
@@ -73,26 +98,46 @@ export default function Games({ params }) {
                 return (
                   <div key={player.id}>
                     <ListItem disablePadding >
-                      <ListItemButton onClick={() => handleUpdatePlayer}>
+                      <ListItemButton>
                         <ListItemIcon>
                           <Avatar>{initial}</Avatar>
                         </ListItemIcon>
-                        <ListItemText primary={player.name} />
+                        <ListItemText
+                          contentEditable // This allows the text to be edited
+                          onBlur={(e) => handleBlur(e, player)}
+                          primary={player.name} />
+
                       </ListItemButton>
-                      <ListItemText primary={player.score} />
+
+                    </ListItem>
+                    <ListItem disablePadding >
+                      <ListItemButton>
+                        <ListItemIcon>
+                          <Avatar>{initial}</Avatar>
+                        </ListItemIcon>
+                        <ListItemText
+
+                          contentEditable // This allows the text to be edited
+                          onBlur={(e) => handleBlur(e, player)}
+                          primary={player.score} />
+                      </ListItemButton>
+                      <form>
+                        <input
+                          type="text"
+                          placeholder="add score"
+                          onChange={handleScoreInputOnChange}
+                          name="newScore"
+                      
+
+                        />
+                        <Button onClick={() => handleUpdateScore(player)} >Add</Button>
+                      </form>
+
                     </ListItem>
 
-                    <form>
-                      <input
-                        type="text"
-                        placeholder="add score"
-                        onChange={handleScoreInputOnChange}
-                        name="newScore"
-                        value={newScore}
 
-                      />
-                      <Button onClick={() => handleUpdateScore(player)} >Save</Button>
-                    </form>
+
+
                   </div>
                 );
               }

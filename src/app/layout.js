@@ -6,6 +6,7 @@ import ThemeProvider from "@/providers/ThemeProvider";
 
 import constants from "@/utils/constants";
 import GameContextProvider from "@/providers/GameContextProvider";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,19 +22,15 @@ export default function RootLayout({ children }) {
 
         <ThemeContextProvider>
           <ThemeProvider>
-
             <GameContextProvider>
-
               <div className="container">
                 <div className="wrapper">
                   <NavBar />
                   {children}
-                  {/* <Footer /> */}
+                  
                 </div>
-              </div>
-
+              </div>             
             </GameContextProvider>
-
           </ThemeProvider>
         </ThemeContextProvider>
 
