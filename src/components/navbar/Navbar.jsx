@@ -11,7 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 const Navbar = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.social}>
+      {/* <div className={styles.social}>
         <Link href="https://www.facebook.com" target="_blank">
           <Image src="/facebook.png" alt="facebook" width={24} height={24} />
         </Link>
@@ -21,7 +21,7 @@ const Navbar = () => {
         <Link href="https://www.youtube.com" target="_blank">
           <Image src="/youtube.png" alt="youtube" width={24} height={24} />
         </Link>
-      </div>
+      </div> */}
 
       <div className={styles.logo}>
         <Link href="/" className={styles.link}>
@@ -30,12 +30,12 @@ const Navbar = () => {
       </div>
 
       <div className={styles.links}>
-        <ThemeToggle />
         <Link href="/" className={styles.link}>
           <HomeIcon />
         </Link>
+        <ThemeToggle />
 
-        <AuthLinks />
+        {/* <AuthLinks /> */}
                       
       </div>
     </div>
