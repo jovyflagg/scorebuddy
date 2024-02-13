@@ -22,15 +22,12 @@ export default function Games({ params }) {
   const { playerId, gameId } = params;
 
   const router = useRouter();
-  const [showModal, setShowModal] = useState(false);
-  const { games, setGames, addGame, updateGame, deleteGame } =
-    useContext(GameContext);
+  const { games, setGames } = useContext(GameContext);
   const selectedGame = games.find((game) => game.id === gameId);
   const [player, setPlayer] = useState(() =>
     selectedGame?.players.find((player) => player.id === playerId)
   );
   const [newScore, setNewScore] = useState(0);
-  const [text, setText] = useState('Initial Text');
 
   useEffect(() => {
     // If selectedGame or playerId changes, update the player state
@@ -40,7 +37,6 @@ export default function Games({ params }) {
   const handleScoreInputOnChange = (event) => {
     setNewScore(event.target.value); //newScore input update
   };
-
 
   const handleUpdateScore = (player) => {
 
@@ -127,17 +123,12 @@ export default function Games({ params }) {
                           placeholder="add score"
                           onChange={handleScoreInputOnChange}
                           name="newScore"
-                      
-
                         />
                         <Button onClick={() => handleUpdateScore(player)} >Add</Button>
                       </form>
 
                     </ListItem>
-
-
-
-
+                    
                   </div>
                 );
               }

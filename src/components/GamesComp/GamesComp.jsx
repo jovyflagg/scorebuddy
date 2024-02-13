@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext, useState } from "react";
-
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -9,7 +8,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
-
 import Button from "@mui/material/Button";
 import styles from "./gamesComp.module.css";
 import GameContext from "@/context/GameContext";
@@ -18,7 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 const GamesComp = () => {
   const router = useRouter();
-  const { games, setGames, addGame, deleteGame } = useContext(GameContext);
+  const { games, addGame, deleteGame } = useContext(GameContext);
   const [newGame, setNewGame] = useState("");
 
   const handleInputChange = (event) => {
@@ -27,8 +25,7 @@ const GamesComp = () => {
 
   const handleAddGame = () => {
     if (newGame.trim() !== "") {
-      addGame(newGame.trim());
-      debugger;
+      addGame(newGame.trim());      
       setNewGame("");
     }
   };
@@ -36,7 +33,6 @@ const GamesComp = () => {
   return (
     <div className={styles.content}>
       <h3>Games</h3>
-
       <Box sx={{ width: "100%" }}>
       <div className={styles.buttonContainer}>
         <input type="text" value={newGame} onChange={handleInputChange} />
