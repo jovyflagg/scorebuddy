@@ -38,8 +38,7 @@ const GamesComp = () => {
 
   return (
     <div className={styles.content}>
-      <h3>Games</h3>
-
+    
       <Box sx={{ width: "100%" }}>
       <Form name={newGame} handleInputChange={handleInputChange} buttonName={"ADD GAME"} handleClick={handleAddGame}/>
         <nav aria-label="secondary mailbox folders">

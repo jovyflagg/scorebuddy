@@ -65,7 +65,7 @@ export default function Games({ params }) {
   return (
     <div className={styles.container}>
       <title>{constants.pages.games}</title>
-      <div className={styles.about}>{selectedGame?.name}</div>
+      <div className={styles.gameName}><h2>{selectedGame?.name}</h2></div>
       
       <div className={styles.button}>
         {/* Step 4: Update Input */}
