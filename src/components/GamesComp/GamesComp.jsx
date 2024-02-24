@@ -10,11 +10,14 @@ import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 
-import Button from "@mui/material/Button";
+
 import styles from "./gamesComp.module.css";
 import GameContext from "@/context/GameContext";
 import { useRouter } from "next/navigation";
 import DeleteIcon from '@mui/icons-material/Delete'
+
+import Form from "../Form/Form";
+
 
 const GamesComp = () => {
   const router = useRouter();
@@ -38,12 +41,7 @@ const GamesComp = () => {
       <h3>Games</h3>
 
       <Box sx={{ width: "100%" }}>
-      <div className={styles.buttonContainer}>
-        <input type="text" value={newGame} onChange={handleInputChange} />
-        <Button variant="contained" onClick={handleAddGame}>
-          ADD GAME
-        </Button>
-      </div>
+      <Form name={newGame} handleInputChange={handleInputChange} buttonName={"ADD GAME"} handleClick={handleAddGame}/>
         <nav aria-label="secondary mailbox folders">
           <List>
             {games.map((game, index) => {

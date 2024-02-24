@@ -18,6 +18,8 @@ import {
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Input from "@/components/Input/Input";
+import Form from "@/components/Form/Form";
 
 export default function Games({ params }) {
   const router = useRouter();
@@ -68,16 +70,19 @@ export default function Games({ params }) {
       <div className={styles.button}>
         {/* Step 4: Update Input */}
 
-        <input type="text" value={newPlayer} onChange={handleInputChange} />
+        <Form name={newPlayer} handleInputChange={handleInputChange} buttonName={"ADD PLAYER"} handleClick={() => handleAddPlayer(selectedGame.id, newPlayer)}/>
+
+      {/* <Input name={newPlayer} handleInputChange={handleInputChange} />
+    
         <span>
-          {/* Step 4: Update Button */}
+        
           <Button
             variant="contained"
             onClick={() => handleAddPlayer(selectedGame.id, newPlayer)}
           >
             ADD PLAYER
           </Button>
-        </span>
+        </span> */}
       </div>
       <Box sx={{ width: "100%" }}>
         <nav aria-label="secondary mailbox folders">
