@@ -49,18 +49,18 @@ a {
   padding-right: 80px;
 }
 
-
-
 @media screen and (max-width: 1536px) {
   .wrapper {
     max-width: 1366px;
   }
 }
+
 @media screen and (max-width: 1280px) {
   .wrapper {
     max-width: 1024px;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .wrapper {
     max-width: 768px;
@@ -68,41 +68,28 @@ a {
     padding-right: 40px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .wrapper {
     max-width: 640px;
   }
 }
+
 @media screen and (max-width: 640px) {
   .wrapper {
     max-width: 475px;
   }
 }
 
-.ql-container{
+.ql-container {
   font-size: 28px !important;
 }
 
-.quill > .ql-container > .ql-editor.ql-blank::before{
+.quill>.ql-container>.ql-editor.ql-blank::before {
   color: #b3b3b1;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
-}
-
-.buttonContainer {
-  display: flex;
-  align-items: center;
-}
-
-.buttonContainer input[type="text"] {
-  height: 35px; /* Adjust the height as needed */
-  width: 250px; /* Adjust the width as needed */
-  margin-right: 10px; /* Optional: Add some spacing between the input and button */
-}
-
-.buttonContainer .MuiButton-contained {
-  height: 40px; /* Adjust the height to match the input field */
 }

@@ -15,7 +15,7 @@ const GameContextProvider = ({ children }) => {
       name,
       players: []
     }
-    debugger
+        
     setGames((prev) => [game, ...prev])
   }
 
